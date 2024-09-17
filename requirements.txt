@@ -6,3 +6,5 @@ transformers>=4.11.3
 torch>=2.4.1
 datasets[audio]
 accelerate
+torch==2.4.1
+torchaudio==2.4.1

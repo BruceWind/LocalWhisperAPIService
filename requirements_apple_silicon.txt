@@ -1,0 +1,10 @@
+fastapi==0.68.0
+uvicorn==0.15.0
+python-multipart==0.0.5
+https://files.pythonhosted.org/packages/6e/99/594b518d44ba2b099753816a9c0c33dbdcf77cc3ec5b256690f70d7431c2/tokenizers-0.20.0-cp312-cp312-macosx_11_0_arm64.whl
+transformers>=4.11.3
+torch>=2.4.1
+datasets[audio]
+accelerate
+torch==2.4.1
+torchaudio==2.4.1
