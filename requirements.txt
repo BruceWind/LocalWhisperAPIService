@@ -1,5 +1,8 @@
 fastapi==0.68.0
 uvicorn==0.15.0
 python-multipart==0.0.5
-transformers==4.11.3
+https://files.pythonhosted.org/packages/fc/7e/794850f99752d1811952722c18652a5c0125b0ef595d9ed069d00da9a5db/tokenizers-0.20.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+transformers>=4.11.3
 torch>=2.4.1
+datasets[audio]
+accelerate

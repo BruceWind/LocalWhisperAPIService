@@ -1,28 +1,41 @@
-from fastapi import FastAPI, File, UploadFile
-from transformers import WhisperForConditionalGeneration, WhisperProcessor
 import torch
+from fastapi import FastAPI, File, UploadFile
+from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
 
 app = FastAPI()
 
+# Set up device and dtype
+device = "cuda:0" if torch.cuda.is_available() else "cpu"
+torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
+
 # Load Whisper model and processor
-model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-base")
-processor = WhisperProcessor.from_pretrained("openai/whisper-base")
+model_id = "openai/whisper-large-v3"
+model = AutoModelForSpeechSeq2Seq.from_pretrained(
+    model_id, torch_dtype=torch_dtype, low_cpu_mem_usage=True, use_safetensors=True
+)
+model.to(device)
+
+processor = AutoProcessor.from_pretrained(model_id)
+
+# Create pipeline
+pipe = pipeline(
+    "automatic-speech-recognition",
+    model=model,
+    tokenizer=processor.tokenizer,
+    feature_extractor=processor.feature_extractor,
+    torch_dtype=torch_dtype,
+    device=device,
+)
 
 @app.post("/recognize")
 async def recognize_speech(audio: UploadFile = File(...)):
     # Read the uploaded file
     audio_content = await audio.read()
     
-    # Process the audio
-    input_features = processor(audio_content, return_tensors="pt").input_features
+    # Process the audio using the pipeline
+    result = pipe(audio_content)
     
-    # Generate token ids
-    predicted_ids = model.generate(input_features)
-    
-    # Decode token ids to text
-    transcription = processor.batch_decode(predicted_ids, skip_special_tokens=True)
-    
-    return {"transcription": transcription[0]}
+    return {"transcription": result["text"]}
 
 if __name__ == "__main__":
     import uvicorn

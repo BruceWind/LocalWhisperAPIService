@@ -28,8 +28,13 @@ Installation and Deployment
    b. Activate the virtual environment:
       - On Windows: `myvenv\Scripts\activate`
       - On macOS and Linux: `source myvenv/bin/activate`
-   c. Install dependencies: `pip install -r requirements.txt`
-   d. Start the API service: `uvicorn app.main:app --reload`
+   c. Before installing dependencies, open the `requirements.txt` file and modify the `tokenizers` line:
+      - Find the line starting with `https://files.pythonhosted.org/packages/...`
+      - Replace it with the appropriate wheel URL for your system. For example:
+        - For Python 3.10 on Linux: use the existing URL
+        - For other systems: visit https://pypi.org/project/tokenizers/#files, find the appropriate wheel for your system, and use its URL
+   d. Install dependencies: `pip install -r requirements.txt`
+   e. Start the API service: `uvicorn app.main:app --reload`
 3. (Option B) Using Docker:
    a. Build the Docker image:
       `docker build -t localwhisperapi .`

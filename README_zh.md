@@ -28,8 +28,13 @@ Whisper 语音识别 API
    b. 激活虚拟环境：
       - Windows 系统：`myvenv\Scripts\activate`
       - macOS 和 Linux 系统：`source myvenv/bin/activate`
-   c. 安装依赖：`pip install -r requirements.txt`
-   d. 启动 API 服务：`uvicorn app.main:app --reload`
+   c. 在安装依赖之前，打开 `requirements.txt` 文件并修改 `tokenizers` 行：
+      - 找到以 `https://files.pythonhosted.org/packages/...` 开头的行
+      - 将其替换为适合您系统的 wheel URL。例如：
+        - 对于 Linux 上的 Python 3.10：使用现有的 URL
+        - 对于其他系统：访问 https://pypi.org/project/tokenizers/#files，找到适合您系统的 wheel，并使用其 URL
+   d. 安装依赖：`pip install -r requirements.txt`
+   e. 启动 API 服务：`uvicorn app.main:app --reload`
 3. (选项 B) 使用 Docker：
    a. 构建 Docker 镜像：
       `docker build -t localwhisperapi .`
