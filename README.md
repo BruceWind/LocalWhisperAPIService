@@ -22,15 +22,20 @@ Tech Stack
 Installation and Deployment
 
 1. Clone the code repository
-2. Create a virtual environment:
-   python3 -m venv myvenv
-3. Activate the virtual environment:
-   - On Windows: myvenv\Scripts\activate
-   - On macOS and Linux: source myvenv/bin/activate
-4. Install dependencies: pip install -r requirements.txt
-5. Download Whisper model weight files
-6. Start the API service: uvicorn app:app --reload
-7. Visit http://localhost:8000/docs to view the API documentation
+2. (Option A) Using virtual environment:
+   a. Create a virtual environment:
+      python3 -m venv myvenv
+   b. Activate the virtual environment:
+      - On Windows: `myvenv\Scripts\activate`
+      - On macOS and Linux: `source myvenv/bin/activate`
+   c. Install dependencies: `pip install -r requirements.txt`
+   d. Start the API service: `uvicorn app.main:app --reload`
+3. (Option B) Using Docker:
+   a. Build the Docker image:
+      `docker build -t localwhisperapi .`
+   b. Run the Docker container:
+      `docker run -d -p 8000:8000 localwhisperapi`
+4. Visit http://localhost:8000/docs to view the API documentation
 
 Usage
 
