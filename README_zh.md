@@ -33,7 +33,7 @@ Whisper 语音识别 API
       - 将其替换为适合您系统的 wheel URL。例如：
         - 对于 Linux 上的 Python 3.10：使用现有的 URL
         - 对于其他系统：访问 https://pypi.org/project/tokenizers/#files，找到适合您系统的 wheel，并使用其 URL
-   d. 安装依赖：`pip install -r requirements.txt`
+   d. 安装依赖：`pip install -i https://mirrors.aliyun.com/pypi/simple/ -r requirements.txt`
    e. 启动 API 服务：`uvicorn app.main:app --reload`
 3. (选项 B) 使用 Docker：
    a. 构建 Docker 镜像：
