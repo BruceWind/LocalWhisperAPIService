@@ -33,7 +33,11 @@ async def recognize_speech(audio: UploadFile = File(...)):
     audio_content = await audio.read()
     
     # Process the audio using the pipeline
-    result = pipe(audio_content)
+    result = pipe(
+        audio_content,
+        generate_kwargs={"language": "en"},  # Force English output
+        return_timestamps=True  # This should implicitly set attention_mask
+    )
     
     return {"transcription": result["text"]}
 
