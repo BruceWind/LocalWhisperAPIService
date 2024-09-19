@@ -27,6 +27,10 @@ pipe = pipeline(
     device=device,
 )
 
+@app.get("/ping")
+async def ping():
+    return {"status": "ok", "message": "Service is healthy"}
+
 @app.post("/transcribe")
 async def transcribe_audio(audio: UploadFile = File(...)):
     # Read the uploaded file
