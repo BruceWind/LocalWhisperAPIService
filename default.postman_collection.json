@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "849ac268-36da-48b6-8001-1898d6283fe4",
+		"name": "default",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34734330"
+	},
+	"item": [
+		{
+			"name": "recognize",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "audio",
+							"type": "file",
+							"src": "postman-cloud:///1ef762d2-7b58-4c70-8565-9f721509cabb"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://stt.scitudy.com/recognize",
+					"protocol": "https",
+					"host": [
+						"stt",
+						"scitudy",
+						"com"
+					],
+					"path": [
+						"recognize"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
