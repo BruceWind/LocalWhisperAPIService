@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "recognize",
+			"name": "transcribe",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -22,7 +22,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://stt.scitudy.com/recognize",
+					"raw": "https://stt.scitudy.com/transcribe",
 					"protocol": "https",
 					"host": [
 						"stt",
@@ -30,7 +30,7 @@
 						"com"
 					],
 					"path": [
-						"recognize"
+						"transcribe"
 					]
 				}
 			},

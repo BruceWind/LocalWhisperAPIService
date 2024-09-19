@@ -27,8 +27,8 @@ pipe = pipeline(
     device=device,
 )
 
-@app.post("/recognize")
-async def recognize_speech(audio: UploadFile = File(...)):
+@app.post("/transcribe")
+async def transcribe_audio(audio: UploadFile = File(...)):
     # Read the uploaded file
     audio_content = await audio.read()
     
