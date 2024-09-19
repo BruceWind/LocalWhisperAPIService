@@ -1,25 +1,23 @@
 # LocalWhisperAPIService
 Whisper Speech Recognition API
 
-This is an API service built on OpenAI's Whisper speech recognition model. It can convert uploaded audio files (such as mp3, wav, etc.) into text.
+This is an API service built on OpenAI's Whisper speech recognition model. It can convert uploaded audio files into text.
 
-Features
+## Features
 
-• Supports uploading of various common audio formats, including mp3, wav, flac, etc.
+• Supports uploading of various common audio formats, including WAV, MP3, FLAC, OGG, M4A, WebM, AAC, WMA, AIFF, and CAF.
 • Based on the Whisper model, supports recognition of multiple languages
 • RESTful API interface, convenient for frontend integration
-• Supports batch audio file processing
-• Concurrency control and error handling
-• (Other features)
+• Health check endpoint for monitoring service status
 
-Tech Stack
+## Tech Stack
 
 • Python 3.8+
-• FastAPI or Flask Web framework
+• FastAPI Web framework
 • Whisper speech recognition model
 • (Other dependencies)
 
-Installation and Deployment
+## Installation and Deployment
 
 1. Clone the code repository
 2. (Option A) Using virtual environment:
@@ -42,10 +40,18 @@ Installation and Deployment
       `docker run -d -p 8000:8000 localwhisperapi`
 4. Visit http://localhost:8000/docs to view the API documentation
 
-Usage
+## Usage
 
-1. POST audio files to the /recognize endpoint
-2. The result returned is a JSON object containing the recognized text content
+1. Health Check:
+   - GET request to the /ping endpoint
+   - Returns a status indicating if the service is healthy
+
+2. Transcription:
+   - POST audio files to the /transcribe endpoint
+   - Supported audio formats: WAV, MP3, FLAC, OGG, M4A, WebM, AAC, WMA, AIFF, CAF
+   - The result returned is a JSON object containing the transcribed text content
+
+Example using curl:
 
 Contributing
 
